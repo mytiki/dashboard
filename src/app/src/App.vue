@@ -1,45 +1,28 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import MainLayout from './MainLayout/MainLayout.vue'
-import { Authenticator, useAuthenticator } from '@aws-amplify/ui-vue'
+import { onMounted } from 'vue'
+import { setCookie, getCookie } from '@/CookieService/index'
 
-import { cognitoUserPoolsTokenProvider } from 'aws-amplify/auth/cognito'
-import { defaultStorage } from 'aws-amplify/utils'
+onMounted(() => {
+  const queryString = window.location.search
+  const urlParams = new URLSearchParams(queryString)
 
-cognitoUserPoolsTokenProvider.setKeyValueStorage(defaultStorage)
+  const accessTokenCookie = getCookie('access_token')
 
-const auth = useAuthenticator()
+  if (accessTokenCookie) return
+
+  const idToken = urlParams.get('id_token')
+  const accessToken = urlParams.get('access_token')
+
+  if (!idToken || !accessToken) return (window.location.href = 'https://github.com')
+
+  setCookie('id_token', idToken!, 1)
+  setCookie('access_token', accessToken!, 1)
+})
 </script>
 
 <template>
-  <div class="flex items-center justify-center h-screen" v-if="auth.route !== 'authenticated'">
-    <div class="px-10 flex flex-col items-center justify-center gap-4">
-      <img src="./assets/images/tiki-logo.svg" alt="" class="w-24 md:hidden" />
-      <authenticator></authenticator>
-    </div>
-    <div class="bg-yellow-light h-full md:flex items-center w-3/4 justify-center hidden">
-      <img src="./assets/images/tiki-logo.svg" alt="" />
-    </div>
-  </div>
-
-  <template v-if="auth.route === 'authenticated'">
-    <MainLayout :user="auth.user" @logout="auth.signOut()" />
-    <RouterView />
-  </template>
+  <MainLayout />
+  <RouterView />
 </template>
-
-<style>
-[data-amplify-authenticator] {
-  --amplify-components-button-primary-background-color: #00b272;
-  --amplify-components-fieldcontrol-focus-box-shadow: #00b272;
-  --amplify-components-tabs-item-active-border-color: #00b272;
-  --amplify-components-tabs-item-color: var(--amplify-components-field-label-color);
-  --amplify-components-tabs-item-hover-color: #00b272;
-  --amplify-components-tabs-item-active-color: #00b272;
-  --amplify-components-button-link-color: var(--amplify-components-field-label-color);
-  --amplify-components-button-link-hover-color: #ffffff;
-  --amplify-components-button-link-hover-background-color: #00b272;
-  --amplify-components-button-primary-hover-background-color: #007048;
-  --amplify-components-passwordfield-button-hover-background-color: #00b27210;
-}
-</style>

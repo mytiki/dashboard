@@ -1,19 +1,11 @@
 <script setup lang="ts">
 import Drawer from 'primevue/drawer'
+import Avatar from 'primevue/avatar'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { type User } from './types/user'
-import type { PropType } from 'vue'
-import Button from 'primevue/button'
 
 const currentRoute = useRoute()
 const shouldShowSidebar = computed(() => currentRoute.meta.sidebar !== false)
-
-defineProps({
-  user: { required: true, type: Object as PropType<User> }
-})
-
-defineEmits(['logout'])
 
 const navigationList = [
   // {
@@ -110,16 +102,13 @@ const navigationList = [
 
         <div class="mt-auto">
           <hr class="border-t border border-black/10" />
-          <div class="flex items-center justify-center p-6 gap-4">
-            <span class="font-bold text-sm">{{ user.signInDetails.loginId }}</span>
-            <button
-              aria-label="logout"
-              class="flex items-center justify-center hover:bg-black/10 p-1 rounded-md"
-              @click="$emit('logout')"
-            >
-              <i class="pi pi-sign-out"></i>
-            </button>
-          </div>
+          <a class="flex items-center justify-start cursor-pointer p-6 gap-2 rounded">
+            <Avatar
+              image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
+              shape="circle"
+            />
+            <span class="font-bold">Miro Benício</span>
+          </a>
         </div>
       </div>
     </template>

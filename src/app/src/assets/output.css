@@ -603,6 +603,23 @@ video {
     margin: 0px;
   }
 
+  .m-4{
+    margin: 1rem;
+  }
+
+  .m-2{
+    margin: 0.5rem;
+  }
+
+  .mx-4{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .mb-4{
+    margin-bottom: 1rem;
+  }
+
   .ml-\[12rem\]{
     margin-left: 12rem;
   }
@@ -659,28 +676,8 @@ video {
     width: 33.333333%;
   }
 
-  .w-32{
-    width: 8rem;
-  }
-
-  .w-\[70\%\]{
-    width: 70%;
-  }
-
   .w-full{
     width: 100%;
-  }
-
-  .w-3\/4{
-    width: 75%;
-  }
-
-  .w-28{
-    width: 7rem;
-  }
-
-  .w-24{
-    width: 6rem;
   }
 
   .cursor-pointer{
@@ -772,12 +769,13 @@ video {
     background-color: rgb(255 240 188 / var(--tw-bg-opacity));
   }
 
-  .p-0{
-    padding: 0px;
+  .bg-tiki-green{
+    --tw-bg-opacity: 1;
+    background-color: rgb(0 178 114 / var(--tw-bg-opacity));
   }
 
-  .p-1{
-    padding: 0.25rem;
+  .p-0{
+    padding: 0px;
   }
 
   .p-2{
@@ -792,11 +790,6 @@ video {
     padding: 1.5rem;
   }
 
-  .px-10{
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-
   .px-16{
     padding-left: 4rem;
     padding-right: 4rem;
@@ -807,14 +800,14 @@ video {
     padding-right: 0.75rem;
   }
 
+  .px-4{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .px-6{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-
-  .px-8{
-    padding-left: 2rem;
-    padding-right: 2rem;
   }
 
   .py-10{
@@ -825,6 +818,26 @@ video {
   .py-4{
     padding-top: 1rem;
     padding-bottom: 1rem;
+  }
+
+  .py-2{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .px-10{
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .px-8{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .px-7{
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
   }
 
   .pl-2{
@@ -890,10 +903,6 @@ video {
   }
 }
 
-.hover\:bg-black\/10:hover{
-  background-color: rgb(0 0 0 / 0.1);
-}
-
 .hover\:bg-tiki-green\/10:hover{
   background-color: rgb(0 178 114 / 0.1);
 }
@@ -909,19 +918,5 @@ video {
 
   .sm\:w-1\/3{
     width: 33.333333%;
-  }
-}
-
-@media (min-width: 768px){
-  .md\:visible{
-    visibility: visible;
-  }
-
-  .md\:flex{
-    display: flex;
-  }
-
-  .md\:hidden{
-    display: none;
   }
 }

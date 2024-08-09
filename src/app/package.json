@@ -13,10 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@aws-amplify/auth": "^6.3.12",
-    "@aws-amplify/ui-vue": "^4.2.10",
     "@primevue/themes": "^4.0.0-rc.2",
-    "aws-amplify": "^6.4.4",
     "primeicons": "^7.0.0",
     "primevue": "^4.0.0-rc.2",
     "vue": "^3.4.29",
